@@ -12,7 +12,7 @@ private:
 	SDK::UGameplayStatics* UGStatics;
 	SDK::UKismetSystemLibrary* KismetSystemLib;
 	SDK::APawn* MyPlayer;
-	SDK::AParentCharacter* BaseClass; //change a class for each game
+	SDK::AParentCharacter* BaseClass; //change the class for each game
 	SDK::UKismetMathLibrary* MathLib;
 
 public:

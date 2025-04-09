@@ -132,6 +132,6 @@ void cheat_manager::dump_bones()
 		Beep(500, 500);
 	}
 	else {
-		printf("Não foi possível abrir o arquivo de log.\n");
+		printf("Fail\n");
 	}
 }

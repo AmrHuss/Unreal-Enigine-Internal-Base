@@ -1,6 +1,6 @@
 #include "pch.h"
 
-#define ConfigFile ("C:\\Config\\GreedIsBad.ini")
+#define ConfigFile ("C:\\Config\\cfg.ini")
 
 void settings::initialize_settings()
 {

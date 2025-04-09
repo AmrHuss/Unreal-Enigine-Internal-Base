@@ -127,7 +127,7 @@ DWORD WINAPI MainThread(LPVOID lpReserved)
 	freopen(("CONOUT$"), "w", stderr);
 
 	if (InitSdk())
-		printf("SDK Inicializada com sucesso! \n");
+		printf("SDK init success \n");
 
 	_mkdir("C:\\Config");
 
