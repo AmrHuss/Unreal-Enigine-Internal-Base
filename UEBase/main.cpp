@@ -37,7 +37,7 @@ HRESULT __stdcall hkResize(IDXGISwapChain* pThis, UINT BufferCount, UINT Width, 
 
 	HRESULT hr = oResize(pThis, BufferCount, Width, Height, NewFormat, SwapChainFlags);
 	ID3D11Texture2D* pBuffer;
-	pThis->GetBuffer(0, __uuidof(ID3D11Texture2D),(void**)&pBuffer);
+	pThis->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&pBuffer);
 
 	pDevice->CreateRenderTargetView(pBuffer, NULL, &mainRenderTargetView);
 
@@ -61,19 +61,19 @@ HRESULT __stdcall hkPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT 
 {
 	if (!init)
 	{
-		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)& pDevice)))
+		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void**)&pDevice)))
 		{
 			pDevice->GetImmediateContext(&pContext);
 			DXGI_SWAP_CHAIN_DESC sd;
 			pSwapChain->GetDesc(&sd);
 			window = sd.OutputWindow;
 			ID3D11Texture2D* pBackBuffer;
-			pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)& pBackBuffer);
+			pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBackBuffer);
 			pDevice->CreateRenderTargetView(pBackBuffer, NULL, &mainRenderTargetView);
 			pBackBuffer->Release();
 			oWndProc = (WNDPROC)SetWindowLongPtr(window, GWLP_WNDPROC, (LONG_PTR)WndProc);
 			InitImGui();
-		
+
 			init = true;
 		}
 		else
@@ -125,7 +125,9 @@ DWORD WINAPI MainThread(LPVOID lpReserved)
 	freopen(("CONIN$"), "r", stdin);
 	freopen(("CONOUT$"), "w", stdout);
 	freopen(("CONOUT$"), "w", stderr);
-	
+
+	if (InitSdk())
+		printf("SDK Inicializada com sucesso! \n");
 
 	_mkdir("C:\\Config");
 
@@ -162,7 +164,7 @@ BOOL WINAPI DllMain(HMODULE hMod, DWORD dwReason, LPVOID lpReserved)
 	switch (dwReason)
 	{
 	case DLL_PROCESS_ATTACH:
-		CreateThread(0,0,MainThread,0,0,0);
+		CreateThread(0, 0, MainThread, 0, 0, 0);
 		break;
 	case DLL_PROCESS_DETACH:
 		kiero::shutdown();
