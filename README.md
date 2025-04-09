@@ -1,6 +1,6 @@
 Unreal engine Internal Base
 =====
-Easy to use base for any unreal engine game 
+Easy to use base for any unreal engine game cheat
 
 This is an internal cheat project for Unreal Engine.
 
