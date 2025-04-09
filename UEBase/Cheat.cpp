@@ -81,8 +81,7 @@ void cheat_manager::cheat_thread()
 		//Draw bones
 		SDK::FVector2D BoneScreen, PrevBoneScreen;
 		
-		//SDK::FVector HeadLoc = BaseClass->Mesh->
-		//SDK::FVector RootLoc = BaseClass->Mesh->GetSocketLocation(
+
 		
 
 		SDK::FVector HeadLoc = BaseClass->Mesh->GetSocketLocation(StrToName("Head"));
