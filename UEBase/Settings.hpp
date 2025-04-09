@@ -3,6 +3,7 @@
 class settings
 {
 public:
+	bool aimbot;
 	bool menu_open;
 	bool init_hooks;
 	bool fov_changer;
@@ -10,9 +11,9 @@ public:
 	bool lines;
 	bool names;
 	bool box;
-	bool skeleton;
+	bool skeleton; 
 	bool dump_bones;
 	void initialize_settings();
 	void save_settings();
-	void load_settings();
+	void load_settings(); 
 };

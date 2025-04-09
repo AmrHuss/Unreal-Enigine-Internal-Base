@@ -11,6 +11,7 @@ void settings::initialize_settings()
 	this->names = false;
 	this->skeleton = false;
 	this->dump_bones = true;
+
 }
 
 void settings::save_settings()

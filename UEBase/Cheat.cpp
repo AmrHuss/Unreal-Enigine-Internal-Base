@@ -1,21 +1,12 @@
 #include "pch.h"
 
 
-inline SDK::FName StrToName(std::string str)
-{
-	std::wstring wstr(str.begin(), str.end());
-	const wchar_t* wstr_cstr = wstr.c_str();
 
-	return SDK::UKismetStringLibrary::Conv_StringToName(SDK::FString(TEXT(wstr_cstr)));
-}
-inline SDK::FName StrCToName(const wchar_t* str)
-{
-	return SDK::UKismetStringLibrary::Conv_StringToName(SDK::FString(TEXT(str)));
-}
+
 
 void cheat_manager::cheat_thread()
 {
-	INT x, y;
+	int x, y; 
 	auto& io = ImGui::GetIO();
 
 
@@ -52,6 +43,7 @@ void cheat_manager::cheat_thread()
 	MathLib = (SDK::UKismetMathLibrary*)SDK::UKismetMathLibrary::StaticClass();
 	if (!MathLib) return;
 
+	//iterare through all players
 	for (int i = 0; i < Player.Num(); i++)
 	{
 		if (!Player.IsValidIndex(i)) continue;
@@ -82,10 +74,8 @@ void cheat_manager::cheat_thread()
 		SDK::FVector2D BoneScreen, PrevBoneScreen;
 		
 
-		
-
 		SDK::FVector HeadLoc = BaseClass->Mesh->GetSocketLocation(StrToName("Head"));
-		SDK::FVector RootLoc = BaseClass->Mesh->GetSocketLocation(StrToName("Root"));
+		SDK::FVector RootLoc = BaseClass->Mesh->GetSocketLocation(StrToName("Root")); // if doesnt work either use .contains or dump bones (heavens blessed us with c++23)
 
 
 		SDK::FVector2D head,Bottom;
@@ -101,7 +91,7 @@ void cheat_manager::cheat_thread()
 			draw->DrawBox(head.X - (CornerWidth / 2), head.Y, CornerWidth, CornerHeight, IsVisible ? ImColor(0,255,0) : ImColor(255,0,0), 1.0f);
 		}
 
-		//example how to draw without bones in relative location
+		//example how to draw without bones in relative location 
 		SDK::FVector2D Screen;
 		if (PlayerController->ProjectWorldLocationToScreen(Location, &Screen, false))
 		{
@@ -110,6 +100,12 @@ void cheat_manager::cheat_thread()
 			if (cfg->lines)
 				ImGui::GetOverlayDrawList()->AddLine(ImVec2(static_cast<float>(io.DisplaySize.x / 2), static_cast<float>(io.DisplaySize.y)), Pos, ImColor(255, 255, 255), 0.7);
 		}
+
+
+		// Aimbot Logic from down below adding ssooooooon
+		
+
+
 
 
 	}
@@ -132,6 +128,7 @@ void cheat_manager::dump_bones()
 		Beep(500, 500);
 	}
 	else {
-		printf("Fail\n");
+		printf("niceeeee\n");
 	}
 }
+
